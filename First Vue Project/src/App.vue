@@ -9,9 +9,13 @@
 
   <button v-on:click="increment">Incrémenter</button>
   <button v-on:click="decrement">Décrémenter</button>
+  <button @click="sortMovies">Réorganiser</button>
 
   <ul>
-    <li v-for="movie in movies">
+    <li 
+    v-for="movie in movies"
+    :key="movie"
+    >
       {{ movie }} <button @click="deleteMovie(movie)">Supprimer</button>
     </li>
   </ul>
@@ -36,6 +40,10 @@ const decrement = () => {
 
 const deleteMovie = (movie) => {
   movies.value = movies.value.filter (m => m != movie)
+}
+
+const sortMovies = () => {
+  movies.value.sort((a,b) => a > b ? 1 : -1)
 }
 
 </script>
