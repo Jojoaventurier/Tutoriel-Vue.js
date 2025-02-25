@@ -1,14 +1,9 @@
 <template>
-  <h1>Bonjour {{ firstName.toUpperCase() }}</h1>
-  <p>Comment allez-vous ?</p>
+  <p>Compteur : {{ count }}</p>
 </template>
 
 <script setup>
-const firstName = "Geoff"
-</script>
+import {ref} from 'vue'
 
-<style>
-h1 {
-  color: red;
-}
-</style>
+const count = ref(0)
+</script>
