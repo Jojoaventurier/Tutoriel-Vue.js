@@ -11,10 +11,11 @@
   <button v-on:click="decrement">Décrémenter</button>
   <hr>
   <button @click="sortMovies">Réorganiser</button>
-  <form action="">
+  <form action="" @submit.prevent="addMovie">
     <input type="text" placeholder="Nouveau film"
     v-model="movieName">
     {{ movieName }}
+    <button>Ajouter le film</button>
   </form>
 
   <ul>
@@ -51,6 +52,11 @@ const deleteMovie = (movie) => {
 
 const sortMovies = () => {
   movies.value.sort((a,b) => a > b ? 1 : -1)
+}
+
+const addMovie = () => {
+  movies.value.push(movieName.value)
+  movieName.value = ""
 }
 
 </script>
