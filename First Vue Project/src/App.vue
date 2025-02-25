@@ -1,5 +1,7 @@
 <template>
   <p>Compteur : {{ count }}</p>
+  <div v-if="count >= 5">Bravo vous avez cliqué plus de 5 fois</div>
+  <div v-else>Vous avez cliqué moins de cinq fois</div>
   <button v-on:click="increment">Incrémenter</button>
   <button v-on:click="decrement">Décrémenter</button>
 </template>
