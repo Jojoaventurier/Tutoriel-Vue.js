@@ -9,7 +9,13 @@
 
   <button v-on:click="increment">Incrémenter</button>
   <button v-on:click="decrement">Décrémenter</button>
+  <hr>
   <button @click="sortMovies">Réorganiser</button>
+  <form action="">
+    <input type="text" placeholder="Nouveau film"
+    v-model="movieName">
+    {{ movieName }}
+  </form>
 
   <ul>
     <li 
@@ -25,6 +31,7 @@
 import {ref} from 'vue'
 
 const count = ref(0)
+const movieName = ref('')
 const movies = ref([
   'Matrix',
   'Alien',
