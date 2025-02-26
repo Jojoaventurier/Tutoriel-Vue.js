@@ -1,29 +1,43 @@
 <template>
   <h1>ToDoList</h1>
 
-  <ul>
-    <li 
-    v-for="task in taskListTest"
-    :key="task"
-    >
-      {{ task.title }}
-      {{ task.date }} 
-      <button @click="deleteMovie(movie)">Supprimer</button>
+  <form @submit.prevent="addTask">
+    <input v-model="newTask" type="text" placeholder="Entrez une nouvelle tâche">
+    <button>Ajouter la tâche</button>
+  </form>
 
+  <ul>
+    <li v-for="task in tasks" :key="task.title">
+      {{ task.title }} - {{ task.date }} 
+      <button @click="deleteTask(task)">Supprimer</button>
     </li>
   </ul>
 </template>
 
-
 <script setup>
+import { ref } from 'vue'
 
-const taskListTest = [
-    { "title": "Acheter la propriété 'Rue de la Paix'", "completed": false, "date": 20240730 },
-    { "title": "Construire un hôtel sur 'Avenue Foch'", "completed": false, "date": 20240730 },
-    { "title": "Éviter la case prison", "completed": false, "date": 20240730 }
-]
+const tasks = ref([
+  { title: "Acheter la propriété 'Rue de la Paix'", completed: false, date: 20240730 },
+  { title: "Construire un hôtel sur 'Avenue Foch'", completed: false, date: 20240730 },
+  { title: "Éviter la case prison", completed: false, date: 20240730 }
+])
 
+const newTask = ref('') // Variable pour stocker l'entrée utilisateur
+
+const deleteTask = (task) => {
+  tasks.value = tasks.value.filter(t => t.title !== task.title)
+}
+
+const addTask = () => {
+  if (newTask.value.trim() === '') return // Vérifie si l'entrée est vide
+
+  tasks.value.push({
+    title: newTask.value,
+    completed: false,
+    date: new Date().toISOString().split('T')[0] // Ajoute la date du jour
+  })
+
+  newTask.value = '' // Réinitialise l'input
+}
 </script>
-
-
-
