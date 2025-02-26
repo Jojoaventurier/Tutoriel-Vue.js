@@ -11,7 +11,7 @@
   <h2>À faire</h2>
   <div v-if="incompleteTasks.length === 0">Vous n'avez pas de tâches en cours !</div>
   <ul>
-    <li v-for="task in incompleteTasks" :key="task.title">
+    <li v-for="task in incompleteTasks" :key="task.date">
       {{ task.title }} - {{ task.date }} 
       <button @click="completeTask(task)">Effectué !</button>
       <button @click="deleteTask(task)">Supprimer</button>
