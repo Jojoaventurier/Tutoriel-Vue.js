@@ -43,6 +43,7 @@ const tasks = ref([
 ])
 
 const newTask = ref('') // Variable pour stocker l'entrée utilisateur
+const hideCompleted = ref(false)
 
 const addTask = () => {
   if (newTask.value.trim() === '') return // Vérifie si l'entrée est vide
@@ -64,9 +65,6 @@ const sortedTasks = () => {
   return sortedTasks
 }
 
-const hideCompleted = () => {
-
-}
 
 </script>
 
