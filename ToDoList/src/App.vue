@@ -16,8 +16,8 @@
 <div v-else>
   <ul>
     <li 
-      v-for="task in tasks"
-      :key="task.date"
+      v-for="task in sortedTasks()"
+      :key="task.title"
       :class="{completed: task.completed}"
       >
     <label>
@@ -28,30 +28,10 @@
   </ul>
 </div>
 
-
-  <!---->
-
-  <h2>À faire</h2>
-  <div v-if="incompleteTasks.length === 0">Vous n'avez pas de tâches en cours !</div>
-  <ul>
-    <li v-for="task in incompleteTasks" :key="task.date">
-      {{ task.title }} - {{ task.date }} 
-      <button @click="completeTask(task)">Effectué !</button>
-      <button @click="deleteTask(task)">Supprimer</button>
-    </li>
-  </ul>
-
-  <h2>Terminées</h2>
-  <ul>
-    <li v-for="task in completedTasks" :key="task.date">
-      {{ task.title }} - {{ task.date }} 
-      <button @click="deleteTask(task)">Supprimer</button>
-    </li>
-  </ul>
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
+import { ref} from 'vue'
 
 const tasks = ref([
   { title: "Acheter la propriété 'Rue de la Paix'", completed: false, date: 20240730 },
@@ -77,15 +57,9 @@ const addTask = () => {
   newTask.value = '' // Réinitialise l'input
 }
 
-const completeTask = (task) => {
-  tasks.value = tasks.value.map(t => 
-    t.title === task.title ? { ...t, completed: true } : t
-  );
-};
-
-const incompleteTasks = computed(() => tasks.value.filter(task => !task.completed));
-const completedTasks = computed(() => tasks.value.filter(task => task.completed));
-
+const sortedTasks = () => {
+  return tasks.value.toSorted((a,b) => a.completed > b.completed ? 1 : -1)
+}
 </script>
 
 <style>
