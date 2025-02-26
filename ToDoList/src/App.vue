@@ -31,11 +31,13 @@
   <p v-if="remainingTasks > 0">
     {{ remainingTasks }} tâche{{ remainingTasks > 1 ? 's' : '' }} restante{{ remainingTasks > 1 ? 's' : '' }} !
   </p>
+  <Checkbox/>
 </div>
 </template>
 
 <script setup>
 import {ref, computed} from 'vue'
+import Checkbox from './Checkbox.vue' 
 
 const tasks = ref([
   { title: "Acheter la propriété 'Rue de la Paix'", completed: false, date: 20240730 },
