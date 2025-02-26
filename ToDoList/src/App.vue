@@ -20,7 +20,7 @@
 
   <h2>Terminées</h2>
   <ul>
-    <li v-for="task in completedTasks" :key="task.title">
+    <li v-for="task in completedTasks" :key="task.date">
       {{ task.title }} - {{ task.date }} 
       <button @click="deleteTask(task)">Supprimer</button>
     </li>
