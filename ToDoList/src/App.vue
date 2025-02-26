@@ -18,6 +18,7 @@
     <li 
       v-for="task in tasks"
       :key="task.date"
+      :class="{completed: task.completed}"
       >
     <label>
       <input type="checkbox" v-model="task.completed">
@@ -50,7 +51,7 @@
 </template>
 
 <script setup>
-import { ref, computed, toDisplayString } from 'vue'
+import { ref, computed } from 'vue'
 
 const tasks = ref([
   { title: "Acheter la propriété 'Rue de la Paix'", completed: false, date: 20240730 },
@@ -89,6 +90,7 @@ const completedTasks = computed(() => tasks.value.filter(task => task.completed)
 
 <style>
 .completed {
-  opacity:
+  opacity: .5;
+  text-decoration: line-through;
 }
 </style>
