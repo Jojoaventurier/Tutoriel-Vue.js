@@ -2,8 +2,10 @@
   <h1>ToDoList</h1>
 
   <form @submit.prevent="addTask">
-    <input v-model="newTask" type="text" placeholder="Entrez une nouvelle tâche">
-    <button>Ajouter la tâche</button>
+    <fieldset>
+      <input v-model="newTask" type="text" placeholder="Entrez une nouvelle tâche">
+      <button>Ajouter la tâche</button>
+    </fieldset>
   </form>
 
   <h2>À faire</h2>
