@@ -4,7 +4,7 @@
   <form @submit.prevent="addTask">
     <fieldset>
       <input v-model="newTask" type="text" placeholder="Entrez une nouvelle tâche">
-      <button>Ajouter la tâche</button>
+      <button :disabled="newTask.length === 0">Ajouter la tâche</button>
     </fieldset>
   </form>
 
