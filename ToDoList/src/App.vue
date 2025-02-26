@@ -9,6 +9,7 @@
   <ul>
     <li v-for="task in tasks" :key="task.title">
       {{ task.title }} - {{ task.date }} 
+      <button @click="completeTask(task)">Effectué !</button>
       <button @click="deleteTask(task)">Supprimer</button>
     </li>
   </ul>
@@ -40,4 +41,11 @@ const addTask = () => {
 
   newTask.value = '' // Réinitialise l'input
 }
+
+const completeTask = (task) => {
+  tasks.value = tasks.value.map(t => 
+    t.title === task.title ? { ...t, completed: true } : t
+  );
+};
+
 </script>
