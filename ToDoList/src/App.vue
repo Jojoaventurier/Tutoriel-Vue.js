@@ -6,17 +6,26 @@
     <button>Ajouter la tâche</button>
   </form>
 
+  <h2>À faire</h2>
   <ul>
-    <li v-for="task in tasks" :key="task.title">
+    <li v-for="task in incompleteTasks" :key="task.title">
       {{ task.title }} - {{ task.date }} 
       <button @click="completeTask(task)">Effectué !</button>
+      <button @click="deleteTask(task)">Supprimer</button>
+    </li>
+  </ul>
+
+  <h2>Terminées</h2>
+  <ul>
+    <li v-for="task in completedTasks" :key="task.title">
+      {{ task.title }} - {{ task.date }} 
       <button @click="deleteTask(task)">Supprimer</button>
     </li>
   </ul>
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 
 const tasks = ref([
   { title: "Acheter la propriété 'Rue de la Paix'", completed: false, date: 20240730 },
@@ -47,5 +56,8 @@ const completeTask = (task) => {
     t.title === task.title ? { ...t, completed: true } : t
   );
 };
+
+const incompleteTasks = computed(() => tasks.value.filter(task => !task.completed));
+const completedTasks = computed(() => tasks.value.filter(task => task.completed));
 
 </script>
