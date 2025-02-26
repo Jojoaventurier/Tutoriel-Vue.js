@@ -28,8 +28,8 @@
     <input type="checkbox" v-model="hideCompleted">
     Masquer les tâches complétées
   </label>
-  <p>
-    {{ remainingTasks }} tâches restantes !
+  <p v-if="remainingTasks > 0">
+    {{ remainingTasks }} tâche{{ remainingTasks > 1 ? 's' : '' }} restante{{ remainingTasks > 1 ? 's' : '' }} !
   </p>
 </div>
 </template>
