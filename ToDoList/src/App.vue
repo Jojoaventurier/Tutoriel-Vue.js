@@ -8,8 +8,6 @@
     </fieldset>
   </form>
 
-  <!--Correction-->
-
 <div v-if="tasks.length === 0">
   Vous n'avez pas de tâches à faire !
 </div>
@@ -64,8 +62,6 @@ const sortedTasks = () => {
   }
   return sortedTasks
 }
-
-
 </script>
 
 <style>
