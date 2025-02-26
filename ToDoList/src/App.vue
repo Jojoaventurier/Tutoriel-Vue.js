@@ -14,7 +14,7 @@
 <div v-else>
   <ul>
     <li 
-      v-for="task in sortedTasks()"
+      v-for="task in sortedTasks"
       :key="task.title"
       :class="{completed: task.completed}"
       >
@@ -32,7 +32,7 @@
 </template>
 
 <script setup>
-import {ref} from 'vue'
+import {ref, computed} from 'vue'
 
 const tasks = ref([
   { title: "Acheter la propriété 'Rue de la Paix'", completed: false, date: 20240730 },
@@ -55,13 +55,13 @@ const addTask = () => {
   newTask.value = '' // Réinitialise l'input
 }
 
-const sortedTasks = () => {
+const sortedTasks = computed(() => {
   const sortedTasks = tasks.value.toSorted((a,b) => a.completed > b.completed ? 1 : -1)
   if (hideCompleted.value === true) {
     return sortedTasks.filter(t => t.completed === false)
   }
   return sortedTasks
-}
+})
 </script>
 
 <style>
