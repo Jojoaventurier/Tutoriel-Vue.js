@@ -8,6 +8,28 @@
     </fieldset>
   </form>
 
+  <!--Correction-->
+
+<div v-if="tasks.length === 0">
+  Vous n'avez pas de tâches à faire !
+</div>
+<div v-else>
+  <ul>
+    <li 
+      v-for="task in tasks"
+      :key="task.date"
+      >
+    <label>
+      <input type="checkbox" v-model="task.completed">
+      {{ task.title }}
+    </label>
+    </li>
+  </ul>
+</div>
+
+
+  <!---->
+
   <h2>À faire</h2>
   <div v-if="incompleteTasks.length === 0">Vous n'avez pas de tâches en cours !</div>
   <ul>
@@ -28,7 +50,7 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed, toDisplayString } from 'vue'
 
 const tasks = ref([
   { title: "Acheter la propriété 'Rue de la Paix'", completed: false, date: 20240730 },
@@ -64,3 +86,9 @@ const incompleteTasks = computed(() => tasks.value.filter(task => !task.complete
 const completedTasks = computed(() => tasks.value.filter(task => task.completed));
 
 </script>
+
+<style>
+.completed {
+  opacity:
+}
+</style>
