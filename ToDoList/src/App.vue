@@ -26,12 +26,15 @@
     </label>
     </li>
   </ul>
+  <label>
+    <input type="checkbox" v-model="hideCompleted">
+    Masquer les tâches complétées
+  </label>
 </div>
-
 </template>
 
 <script setup>
-import { ref} from 'vue'
+import {ref} from 'vue'
 
 const tasks = ref([
   { title: "Acheter la propriété 'Rue de la Paix'", completed: false, date: 20240730 },
@@ -40,10 +43,6 @@ const tasks = ref([
 ])
 
 const newTask = ref('') // Variable pour stocker l'entrée utilisateur
-
-const deleteTask = (task) => {
-  tasks.value = tasks.value.filter(t => t.title !== task.title)
-}
 
 const addTask = () => {
   if (newTask.value.trim() === '') return // Vérifie si l'entrée est vide
@@ -58,8 +57,17 @@ const addTask = () => {
 }
 
 const sortedTasks = () => {
-  return tasks.value.toSorted((a,b) => a.completed > b.completed ? 1 : -1)
+  const sortedTasks = tasks.value.toSorted((a,b) => a.completed > b.completed ? 1 : -1)
+  if (hideCompleted.value === true) {
+    return sortedTasks.filter(t => t.completed === false)
+  }
+  return sortedTasks
 }
+
+const hideCompleted = () => {
+
+}
+
 </script>
 
 <style>
