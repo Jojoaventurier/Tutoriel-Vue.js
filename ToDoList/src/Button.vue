@@ -1,3 +1,3 @@
 <template>
-    <button class="secondary">rien</button>    
+    <button class="secondary"><slot></slot></button>    
 </template>

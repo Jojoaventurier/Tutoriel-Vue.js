@@ -8,6 +8,10 @@
     </fieldset>
   </form>
 
+  <Button>
+    <strong>Demo</strong> de bouton
+  </Button>
+
 <div v-if="tasks.length === 0">
   Vous n'avez pas de tâches à faire !
 </div>
