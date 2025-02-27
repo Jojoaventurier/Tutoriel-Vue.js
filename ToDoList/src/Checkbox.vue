@@ -1,11 +1,12 @@
 <template>
 <label>
-    <input type="checkbox" @change="onChange">
+    <input type="checkbox" v-model="model">
     {{ label }}
 </label>
 </template>
 
 <script setup>
+const model = defineModel() //pas besoin d'importer defineModel()
 defineProps({ // pas besoin d'importer defineProps()
     label: String
 })

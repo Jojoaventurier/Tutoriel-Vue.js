@@ -21,7 +21,8 @@
   
     <Checkbox :label="task.title" 
     @check="console.log('coché')"
-    @uncheck="console.log('non-coché')"/>
+    @uncheck="console.log('non-coché')"
+    v-model="task.completed"/>
 
     <!--<label>
       <input type="checkbox" v-model="task.completed">
