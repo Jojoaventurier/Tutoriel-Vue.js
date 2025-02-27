@@ -14,6 +14,8 @@
   </template>
 </Layout>
 
+<Timer></Timer>
+
   <h1>ToDoList</h1>
   <form action="" @submit.prevent="addTask">
     <fieldset>
@@ -62,6 +64,7 @@
 import {ref, computed, onMounted} from 'vue'
 import Checkbox from './Checkbox.vue' 
 import Layout from './Layout.vue'
+import Timer from './Timer.vue'
 import Button from "./Button.vue"
 
 const tasks = ref([])
