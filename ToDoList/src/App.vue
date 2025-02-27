@@ -19,11 +19,14 @@
       :class="{completed: task.completed}"
       >
   
-    <!--<Checkbox :label="task.title"/>-->
-    <label>
+    <Checkbox :label="task.title" 
+    @check="console.log('coché')"
+    @uncheck="console.log('non-coché')"/>
+
+    <!--<label>
       <input type="checkbox" v-model="task.completed">
       {{ task.title }}
-    </label>
+    </label>-->
     </li>
   </ul>
   <label>
