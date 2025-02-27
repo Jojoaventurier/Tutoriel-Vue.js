@@ -59,16 +59,16 @@
 </template>
 
 <script setup>
-import {ref, computed} from 'vue'
+import {ref, computed, onMounted} from 'vue'
 import Checkbox from './Checkbox.vue' 
 import Layout from './Layout.vue'
 import Button from "./Button.vue"
 
-const tasks = ref([
-  { title: "Acheter la propriété 'Rue de la Paix'", completed: false, date: 20240730 },
-  { title: "Construire un hôtel sur 'Avenue Foch'", completed: false, date: 20240730 },
-  { title: "Éviter la case prison", completed: false, date: 20240730 }
-])
+const tasks = ref([])
+
+onMounted(() => {
+  console.log('hello')
+})
 
 const newTask = ref('') // Variable pour stocker l'entrée utilisateur
 const hideCompleted = ref(false)
