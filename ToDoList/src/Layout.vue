@@ -1,8 +1,17 @@
 <template>
     <div class="layout">
-        <header></header>
-        <aside></aside>
-        <footer></footer>
+        <header>
+            <slot name="header"></slot>
+        </header>
+        <aside>
+            <slot name="aside"></slot>
+        </aside>
+        <main>
+            <slot name="main"></slot>
+        </main>
+        <footer>
+            <slot name="footer"></slot>
+        </footer>
     </div>
 </template>
 

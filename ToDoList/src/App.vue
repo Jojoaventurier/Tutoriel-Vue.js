@@ -1,7 +1,16 @@
 <template>
 <Layout>
   <template v-slot:header>
-    
+    Header
+  </template>
+  <template #aside>
+    Sidebar
+  </template>
+  <template #main>
+    Main
+  </template>
+  <template #footer>
+    Footer
   </template>
 </Layout>
 
