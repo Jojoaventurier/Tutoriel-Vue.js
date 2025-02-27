@@ -18,6 +18,8 @@
       :key="task.title"
       :class="{completed: task.completed}"
       >
+  
+    <!--<Checkbox :label="task.title"/>-->
     <label>
       <input type="checkbox" v-model="task.completed">
       {{ task.title }}
