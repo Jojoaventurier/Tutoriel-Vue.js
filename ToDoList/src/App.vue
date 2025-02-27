@@ -43,6 +43,7 @@
 <script setup>
 import {ref, computed} from 'vue'
 import Checkbox from './Checkbox.vue' 
+import Button from "./Button.vue"
 
 const tasks = ref([
   { title: "Acheter la propriété 'Rue de la Paix'", completed: false, date: 20240730 },
