@@ -1,16 +1,21 @@
 <template>
-  <h1>ToDoList</h1>
+<Layout>
+  <template v-slot:header>
+    
+  </template>
+</Layout>
 
-  <form @submit.prevent="addTask">
+  <h1>ToDoList</h1>
+  <form action="" @submit.prevent="addTask">
     <fieldset>
       <input v-model="newTask" type="text" placeholder="Entrez une nouvelle tâche">
       <button :disabled="newTask.length === 0">Ajouter la tâche</button>
     </fieldset>
   </form>
 
-  <Button>
+  <!--<Button>
     <strong>Demo</strong> de bouton
-  </Button>
+  </Button>-->
 
 <div v-if="tasks.length === 0">
   Vous n'avez pas de tâches à faire !
@@ -47,6 +52,7 @@
 <script setup>
 import {ref, computed} from 'vue'
 import Checkbox from './Checkbox.vue' 
+import Layout from './Layout.vue'
 import Button from "./Button.vue"
 
 const tasks = ref([
