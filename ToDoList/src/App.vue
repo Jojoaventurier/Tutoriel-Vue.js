@@ -37,7 +37,6 @@
   <p v-if="remainingTasks > 0">
     {{ remainingTasks }} tâche{{ remainingTasks > 1 ? 's' : '' }} restante{{ remainingTasks > 1 ? 's' : '' }} !
   </p>
-  <Checkbox label="bonjour"/>
 </div>
 </template>
 
