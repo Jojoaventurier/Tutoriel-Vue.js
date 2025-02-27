@@ -1,13 +1,14 @@
 <template>
   <input type="text" v-model="page.title">
-  Temps écoulé : {{ timer }}
+  Temps écoulé : {{ time }}
+  <button @click="reset">Réinitialiser le timer</button>
 </template>
 
 <script setup>
 import { ref, watch, watchEffect } from 'vue'
 import { useTimer } from './composable/useTimer.js'
 
-  const timer = useTimer()
+  const {time, reset} = useTimer()
   const page = ref({
     title: ''
   })

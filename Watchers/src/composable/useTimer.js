@@ -14,5 +14,10 @@ export function useTimer(initial = 0) {
         clearInterval(timer);
     })
 
-    return time
+    return {
+        time,
+        reset () {
+            time.value = 0;
+        }
+    }
 }
