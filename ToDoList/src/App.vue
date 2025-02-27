@@ -13,8 +13,8 @@
     Footer
   </template>
 </Layout>
-
-<Timer></Timer>
+<button @click="showTimer = !showTimer">Afficher / masquer</button>
+<Timer v-if="showTimer"></Timer>
 
   <h1>ToDoList</h1>
   <form action="" @submit.prevent="addTask">
@@ -66,6 +66,8 @@ import Checkbox from './Checkbox.vue'
 import Layout from './Layout.vue'
 import Timer from './Timer.vue'
 import Button from "./Button.vue"
+
+const showTimer = ref(true)
 
 const tasks = ref([])
 
