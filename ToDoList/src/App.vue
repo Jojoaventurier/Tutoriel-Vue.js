@@ -67,7 +67,9 @@ import Button from "./Button.vue"
 const tasks = ref([])
 
 onMounted(() => {
-  console.log('hello')
+  fetch('https://jsonplaceholder.typicode.com/todos')
+  .then(r => r.json())
+  .then (v => tasks.value = v.map(task => ({ ...task, date: task.id})))
 })
 
 const newTask = ref('') // Variable pour stocker l'entrée utilisateur
