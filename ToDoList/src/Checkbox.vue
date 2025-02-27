@@ -1,6 +1,6 @@
 <template>
 <label>
-    <input type="checkbox" v-model="model">
+    <input type="checkbox" v-model="model"> <!--@onChange="onChange"-->
     {{ label }}
 </label>
 </template>
