@@ -17,6 +17,10 @@ export function useTimer(initial = 0) {
     return {
         time,
         reset () {
+            clearInterval(timer);
+            timer = setInterval(() => {
+                time.value++
+            }, 1_000)
             time.value = 0;
         }
     }
