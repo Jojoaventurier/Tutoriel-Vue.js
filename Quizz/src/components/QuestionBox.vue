@@ -1,25 +1,41 @@
 <script setup>
-defineProps({
+import { ref } from 'vue'
+
+const props = defineProps({
   question: {
     type: String,
     required: true,
   },
-  answer: {
-    type: String,
+  choices: {
+    type: Array,
     required: true,
   },
+  index: {
+    type: Number,
+    required: true,
+  }
 })
+
+const selectedAnswer = ref('')
 </script>
 
 <template>
   <div>
     <p>{{ question }}</p>
     <ul>
-      <li>
-        <input type="radio" :value="answer" name="answer">
-        {{ answer }}
+      <li v-for="(choice, i) in choices" :key="i">
+        <label>
+          <input 
+            type="radio" 
+            :name="'question-' + index" 
+            :value="choice" 
+            v-model="selectedAnswer"
+          />
+          {{ choice }}
+        </label>
       </li>
     </ul>
+    <p>Réponse sélectionnée : {{ selectedAnswer }}</p>
   </div>
 </template>
 
