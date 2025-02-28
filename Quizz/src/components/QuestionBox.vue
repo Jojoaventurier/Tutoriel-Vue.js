@@ -1,41 +1,63 @@
 <script setup>
-import { ref } from 'vue'
+import { ref } from 'vue' // Importation de ref pour rendre les variables réactives
 
+// Définition des propriétés reçues du parent
 const props = defineProps({
-  question: {
-    type: String,
-    required: true,
-  },
-  choices: {
-    type: Array,
-    required: true,
-  },
-  index: {
-    type: Number,
-    required: true,
-  }
+  question: { type: String, required: true }, // Texte de la question
+  choices: { type: Array, required: true },   // Liste des choix possibles
+  correctAnswer: { type: String, required: true } // Bonne réponse
 })
 
+// Variable réactive pour stocker la réponse sélectionnée
 const selectedAnswer = ref('')
+const isDisabled = ref(true) // Le bouton est désactivé tant qu'aucune réponse n'est sélectionnée
+
+// Permet d'émettre des événements vers le parent
+const emit = defineEmits(['answerValidated'])
+
+// Fonction appelée à chaque sélection pour activer/désactiver le bouton
+const selectAnswer = () => {
+  isDisabled.value = selectedAnswer.value === '' // Active le bouton si une réponse est sélectionnée
+}
+
+// Fonction pour valider la réponse
+const validateAnswer = () => {
+  const isCorrect = selectedAnswer.value === props.correctAnswer // Vérifie si la réponse est correcte
+  emit('answerValidated', isCorrect) // Envoie l'événement au parent avec la réponse
+  selectedAnswer.value = '' // Réinitialise la réponse sélectionnée
+  isDisabled.value = true // Désactive à nouveau le bouton
+}
 </script>
 
 <template>
   <div>
-    <p>{{ question }}</p>
+    <h2>{{ question }}</h2> <!-- Affiche la question -->
     <ul>
-      <li v-for="(choice, i) in choices" :key="i">
+      <li v-for="(choice, i) in choices" :key="i"> <!-- Boucle pour afficher toutes les réponses -->
         <label>
-          <input 
-            type="radio" 
-            :name="'question-' + index" 
-            :value="choice" 
-            v-model="selectedAnswer"
+          <input
+            type="radio"
+            :value="choice"
+            :class="{'text-green-500': selectedAnswer === correctAnswer, 'text-red-500': selectedAnswer !== correctAnswer && selectedAnswer !== ''}"
+            v-model="selectedAnswer" 
+            @change="selectAnswer" 
+            name="answer"
           />
+          <!-- v-model="" Lie la réponse sélectionnée -->
+          <!-- @change Déclenche la fonction à chaque sélection -->
           {{ choice }}
         </label>
       </li>
     </ul>
-    <p>Réponse sélectionnée : {{ selectedAnswer }}</p>
+
+    <!-- Bouton Valider -->
+    <!-- Bouton désactivé tant qu'aucune réponse n'est choisie -->
+    <button 
+      :disabled="isDisabled" 
+      @click="validateAnswer"
+      class="bg-blue-500 text-white p-2 rounded">
+      Valider
+    </button>
   </div>
 </template>
 
