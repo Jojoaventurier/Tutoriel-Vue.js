@@ -1,6 +1,6 @@
 <template>
     <div>
-        Etape {{ value }}/{{ max }}
+        Etape {{ value + 1 }}/{{ max + 1 }}
     </div>
 </template>
 
