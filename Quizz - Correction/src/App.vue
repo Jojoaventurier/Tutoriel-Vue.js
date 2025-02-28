@@ -1,7 +1,23 @@
-<script setup>
-</script>
-
 <template>
 </template>
+
+<script setup>
+import { onMounted, ref } from 'vue';
+
+const quiz = ref(null)
+
+onMounted(() => {
+  fetch('/quiz.json')
+    .then(r.ok) {
+      if (r.ok) {
+        return r.json()
+      }
+      throw new Error('Impossible de récupérer le fichier json')
+    })
+    .then (data => {
+      quiz.value = data
+    }
+})
+</script>
 
 
