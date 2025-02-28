@@ -17,7 +17,7 @@ const state = ref('loading')
 
 onMounted(() => {
   fetch('/quiz.json')
-    .then(r.ok) {
+    .then(r => {
       if (r.ok) {
         return r.json()
       }
