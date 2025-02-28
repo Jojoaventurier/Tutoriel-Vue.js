@@ -1,4 +1,7 @@
 <template>
+  <div>
+    {{ quiz }}
+  </div>
 </template>
 
 <script setup>
