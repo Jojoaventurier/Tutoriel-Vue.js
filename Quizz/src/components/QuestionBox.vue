@@ -1,14 +1,25 @@
+<script setup>
+defineProps({
+  question: {
+    type: String,
+    required: true,
+  },
+  answer: {
+    type: String,
+    required: true,
+  },
+})
+</script>
+
 <template>
-  <div class="item">
-    <i>
-      <slot name="icon"></slot>
-    </i>
-    <div class="details">
-      <h3>
-        <slot name="heading"></slot>
-      </h3>
-      <slot></slot>
-    </div>
+  <div>
+    <p>{{ question }}</p>
+    <ul>
+      <li>
+        <input type="radio" :value="answer" name="answer">
+        {{ answer }}
+      </li>
+    </ul>
   </div>
 </template>
 
