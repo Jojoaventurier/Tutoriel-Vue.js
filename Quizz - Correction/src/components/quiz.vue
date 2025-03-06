@@ -26,7 +26,8 @@ const addAnswer = (answer) => {
     answers.value[step.value] = answer
     if (step.value === props.quiz.questions.length -1) {
         state.value = 'recap'
+    } else {
+        step.value++
     }
-    step.value++
 }
 </script>
