@@ -21,7 +21,6 @@ const props = defineProps({
 })
 const emits = defineEmits(['answer'])
 const answer = ref(null)
-
 const hasAnswer = computed(() => answer.value !== null) // utilisée pour désactiver le bouton "Question suivante" aucune réponse n'a été choisie
 </script>
 
