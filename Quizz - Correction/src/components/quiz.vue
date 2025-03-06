@@ -9,6 +9,7 @@
 <script setup>
 import { ref, computed } from 'vue';
 import Progress from './progress.vue'
+import Question from './question.vue'
 
 const props = defineProps ({
     quiz: Object
