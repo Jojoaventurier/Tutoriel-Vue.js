@@ -1,11 +1,11 @@
 <template>
     <div class="question">
-        <h3>{{ question }}</h3>
+        <h3>{{ question.question }}</h3>
     </div>
 </template>
 
 <script setup>
-defineProps({
+const props = defineProps({
     question: Object
 })
 </script>
