@@ -3,6 +3,9 @@
     <p>
         Score : {{ score }}/{{ quiz.questions.length }}
     </p>
+    <p>
+        {{ hasWon ? quiz.success_message : quiz.failure_message }}
+    </p>
 </template>
 
 <script setup>
@@ -21,4 +24,6 @@ const score = computed(() => {
         return acc
     }, 0)
 })
+
+const hasWon = computed (() => score.value >= props.quiz.minimum_score)
 </script>
