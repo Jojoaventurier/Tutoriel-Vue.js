@@ -2,7 +2,7 @@
     <div>
         <h1>{{ quiz.title }}</h1>
         <Progress :value="step" :max="quiz.questions.length - 1"/>
-        <Question :question="question" v-if="question" @answer ="addAnswer"/>
+        <Question :question="question" v-if="state === 'question'" @answer ="addAnswer"/>
         {{ answers }}
     </div>
 </template>
