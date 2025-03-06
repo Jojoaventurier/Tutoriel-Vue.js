@@ -3,14 +3,16 @@
         <h1>{{ quiz.title }}</h1>
         <Progress :value="step" :max="quiz.questions.length - 1"/>
         <Question :question="question" v-if="state === 'question'" @answer ="addAnswer"/>
+        <Recap v-if="state === 'recap'"/>
         {{ answers }}
     </div>
 </template>
 
 <script setup>
 import { ref, computed } from 'vue';
-import Progress from './progress.vue'
-import Question from './question.vue'
+import Progress from './progress.vue';
+import Question from './question.vue';
+import Recap from './recap.vue';
 
 const props = defineProps ({
     quiz: Object
