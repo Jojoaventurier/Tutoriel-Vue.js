@@ -6,7 +6,8 @@
                 <Answer :id="`answer${index}`"
                         :disabled="hasAnswer"
                         :value="choice"
-                        v-model="answer"/>
+                        v-model="answer"
+                        :correctAnswer="question.correct_answer"/>
             </li>
         </ul>
         <button :disabled="!hasAnswer" @click="emits('answer', answer)">Question suivante</button>
