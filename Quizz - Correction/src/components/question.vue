@@ -3,7 +3,7 @@
         <h3>{{ question.question }}</h3>
         <ul>
             <li v-for="(choice, index) in randomChoices" :key="choice"> <!--on peut ajouter index dans le for pour le récupérer ensuite et le mettre en id par exemple-->
-                <Answer :id="`answer${index}`""
+                <Answer :id="`answer${index}`"
                         :disabled="hasAnswer"
                         :value="choice"
                         v-model="answer"/>
@@ -14,9 +14,9 @@
 </template>
 
 <script setup>
-import { shuffleArray } from '@/functions/array.js';
 import { ref, computed } from 'vue';
-import { Answer } from './answer.vue';
+import { shuffleArray } from '@/functions/array.js';
+import Answer from './answer.vue';
 
 const props = defineProps({
     question: Object
