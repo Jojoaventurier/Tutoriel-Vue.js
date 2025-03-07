@@ -3,10 +3,10 @@
         <h3>{{ question.question }}</h3>
         <ul>
             <li v-for="(choice, index) in randomChoices" :key="choice"> <!--on peut ajouter index dans le for pour le récupérer ensuite et le mettre en id par exemple-->
-                <label :for="`answer${index}`"> <!--on pense bien à lier l'id de l'input au for du label pour l'accessibilité-->
-                    <input :id="`answer${index}`" type="radio" name="answer" v-model="answer" :value="choice">
-                    {{ choice }}
-                </label>
+                <Answer :id="`answer${index}`""
+                        :disabled="hasAnswer"
+                        :value="choice"
+                        v-model="answer"/>
             </li>
         </ul>
         <button :disabled="!hasAnswer" @click="emits('answer', answer)">Question suivante</button>
@@ -14,8 +14,9 @@
 </template>
 
 <script setup>
-import { shuffleArray } from '@/functions/array'
-import { ref, computed } from 'vue'
+import { shuffleArray } from '@/functions/array.js';
+import { ref, computed } from 'vue';
+import { Answer } from './answer.vue';
 
 const props = defineProps({
     question: Object
