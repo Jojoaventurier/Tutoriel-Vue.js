@@ -7,6 +7,7 @@
                         :disabled="hasAnswer"
                         :value="choice"
                         @change="onAnswer"
+                        v-model="answer"
                         :correctAnswer="question.correct_answer"/>
             </li>
         </ul>
@@ -25,8 +26,14 @@ const emit = defineEmits(['answer'])
 const answer = ref(null)
 const hasAnswer = computed(() => answer.value !== null) // utilisée pour désactiver le bouton "Question suivante" aucune réponse n'a été choisie
 const randomChoices = computed(() => shuffleArray(props.question.choices))
-
 let timer
+
+const onAnswer = (e) => {
+    clearTimeout(timer)
+    timer = setTimeout (() => {
+        emit('answer', answer.value)
+    }, 1_000)
+}
 
 onMounted(() => {
     timer = setTimeout(() => {
@@ -35,7 +42,7 @@ onMounted(() => {
 })
 
 onUnmounted (() => {
-    cleearTimeout(timer)
+    clearTimeout(timer)
 })
 
 </script>

@@ -1,6 +1,6 @@
 <template>
     <label :for="id" :class="classes"> <!--on pense bien à lier l'id de l'input au for du label pour l'accessibilité-->
-        <input :disabled="disabled" :id="id" type="radio" name="answer" :value="value" @change="onChange">
+        <input :disabled="disabled" :id="id" type="radio" name="answer" v-model="answer" :value="value" @change="onChange">
         {{ value }}
     </label>
 </template>
