@@ -28,17 +28,18 @@ const hasAnswer = computed(() => answer.value !== null) // utilisée pour désac
 const randomChoices = computed(() => shuffleArray(props.question.choices))
 let timer
 
-const onAnswer = (e) => {
+const onAnswer = () => {
     clearTimeout(timer)
     timer = setTimeout (() => {
         emit('answer', answer.value)
-    }, 1_000)
+    }, 1_500)
 }
 
 onMounted(() => {
     timer = setTimeout(() => {
-        emit('answer', answer.value)
-    }, 3_000)
+        answer.value = ""
+        onAnswer()
+    }, 5_000)
 })
 
 onUnmounted (() => {
