@@ -1,6 +1,6 @@
 <template>
     <label :for="id" :class="classes"> <!--on pense bien à lier l'id de l'input au for du label pour l'accessibilité-->
-        <input :disabled="disabled" :id="id" type="radio" name="answer" v-model="model" :value="value">
+        <input :disabled="disabled" :id="id" type="radio" name="answer" :value="value" @change="onChange">
         {{ value }}
     </label>
 </template>
@@ -14,6 +14,10 @@ const props = defineProps({
     value: String,
     correctAnswer: String
 })
+const emit = defineEmits(['change'])
+const onChange = (event) => {
+    emit('change', event)
+}
 const model = defineModel()
 const classes = computed(() => ({
     disabled : props.disabled,

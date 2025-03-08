@@ -6,7 +6,7 @@
                 <Answer :id="`answer${index}`"
                         :disabled="hasAnswer"
                         :value="choice"
-                        v-model="answer"
+                        @change="onAnswer"
                         :correctAnswer="question.correct_answer"/>
             </li>
         </ul>
@@ -14,7 +14,7 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted } from 'vue';
+import { ref, computed, onMounted, onUnmounted } from 'vue';
 import { shuffleArray } from '@/functions/array.js';
 import Answer from './answer.vue';
 
@@ -34,6 +34,9 @@ onMounted(() => {
     }, 3_000)
 })
 
+onUnmounted (() => {
+    cleearTimeout(timer)
+})
 
 </script>
 
