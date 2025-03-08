@@ -10,12 +10,11 @@
                         :correctAnswer="question.correct_answer"/>
             </li>
         </ul>
-        <button :disabled="!hasAnswer" @click="emit('answer', answer)">Question suivante</button>
-    </div>
+       </div>
 </template>
 
 <script setup>
-import { ref, computed } from 'vue';
+import { ref, computed, onMounted } from 'vue';
 import { shuffleArray } from '@/functions/array.js';
 import Answer from './answer.vue';
 
@@ -26,6 +25,16 @@ const emit = defineEmits(['answer'])
 const answer = ref(null)
 const hasAnswer = computed(() => answer.value !== null) // utilisée pour désactiver le bouton "Question suivante" aucune réponse n'a été choisie
 const randomChoices = computed(() => shuffleArray(props.question.choices))
+
+let timer
+
+onMounted(() => {
+    timer = setTimeout(() => {
+        emit('answer', answer.value)
+    }, 3_000)
+})
+
+
 </script>
 
 <style>
