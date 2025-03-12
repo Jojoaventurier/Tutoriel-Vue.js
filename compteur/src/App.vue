@@ -8,8 +8,13 @@
 
 <script setup>
   import { computed, ref } from 'vue';
+  import { useCounter } from './composable/useCounter.js';
 
-  const count = ref(0)
-  const double = comptued(() => count.value * 2)
-  const increment = () => count.value++
+  const { count, increment } = useCounter()
+  const person = ref({
+    firstname: 'John',
+    lastname: 'Doe'
+  })
+  console.log(person)
+  const double = computed(() => count.value * 2)
 </script>
