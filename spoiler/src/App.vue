@@ -5,6 +5,9 @@
     <div v-if="showSpoiler" class="spoiler">
       A la fin de la série, Marc Cunningan meurt !
     </div>
+    <div v-else>
+      Voir une information qui gâche la série
+    </div>
   </FadeSlideTransition>
 </template>
 
@@ -21,6 +24,5 @@ const toggleSpoiler = () => showSpoiler.value = !showSpoiler.value
   .spoiler {
     padding: 1rem;
     border: 1px solid #c42626de;
-    transition: .5s;
   }
 </style>
