@@ -19,7 +19,6 @@ const showSpoiler = ref(false)
 const toggleSpoiler = () => showSpoiler.value = !showSpoiler.value
 </script>
 
-
 <style>
   .spoiler {
     padding: 1rem;
