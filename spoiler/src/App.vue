@@ -21,8 +21,13 @@ const toggleSpoiler = () => showSpoiler.value = !showSpoiler.value
   border: 1px solid #c42626de;
   transition: .5s;
 }
-.v-enter-from,
+.v-enter-from {
+  opacity: 0;
+  transform: translateX(10px);
+}
+
 .v-leave-to {
   opacity: 0;
+  transform: translateX(-10px);
 }
 </style>
