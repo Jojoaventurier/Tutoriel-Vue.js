@@ -23,9 +23,15 @@
 
 
   const person = ref(raw)
-  const person2 = shallowRef(raw)
-  const person3 = ref(markRaw(raw))
+  const person2 = shallowRef(raw) // REVOIR
+  const person3 = ref(markRaw(raw)) // REVOIR
   console.log(person3.value, person2.value, person.value === raw)
   console.log(toRaw(person.value) === raw)
-  const double = computed(() => count.value * 2)
+  const double = computed(() => count.value * 2) // REVOIR
+  //VOIR REACTIVITY IN DEPTH IN VUE.JS DOCUMENTATION
+
+  const realPerson = ref({
+    firstName : 'Jojo',
+    lastName: 'Aventurier'
+  })
 </script>
