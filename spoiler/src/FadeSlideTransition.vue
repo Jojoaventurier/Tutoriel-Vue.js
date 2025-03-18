@@ -3,6 +3,11 @@
         <Transition name="fadeSlide" mode="out-in"> <!--Avec mode="out-in", on évite le petit décalage d'animation, la suivante commence quand la première est finie-->
             <slot></slot>
         </Transition>
+<!--On a aussi appear :
+    <Transition name="fadeSlide" appear>
+        <slot></slot>
+    </Transition>
+-->
     </div>
 </template>
 
