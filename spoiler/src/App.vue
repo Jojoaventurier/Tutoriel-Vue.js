@@ -19,5 +19,10 @@ const toggleSpoiler = () => showSpoiler.value = !showSpoiler.value
 .spoiler {
   padding: 1rem;
   border: 1px solid #c42626de;
+  transition: .5s;
+}
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
 }
 </style>
