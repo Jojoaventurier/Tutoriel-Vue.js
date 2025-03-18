@@ -1,13 +1,23 @@
 <template>
   <button @click="toggleSpoiler">Afficher / Masquer le spoiler</button>
-  <div v-if="showSpoiler" class="spoiler">
-    A la fin de la série, Marc Cunningan meurt !
-  </div>
+
+  <Transition> <!--VOIR DOCUMENTATION CSS-BASED TRANSITIONS-->
+    <div v-if="showSpoiler" class="spoiler">
+      A la fin de la série, Marc Cunningan meurt !
+    </div>
+  </Transition>
 </template>
 
 <script setup>
 import { ref } from 'vue';
 
-const showspoiler = ref(false)
-const toggleSpoiler = () => showspoiler.value = !showspoiler.value
+const showSpoiler = ref(false)
+const toggleSpoiler = () => showSpoiler.value = !showSpoiler.value
 </script>
+
+<style>
+.spoiler {
+  padding: 1rem;
+  border: 1px solid #c42626de;
+}
+</style>
