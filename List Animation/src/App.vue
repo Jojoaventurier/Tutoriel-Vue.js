@@ -19,6 +19,15 @@
 <script setup>
 import { ref } from 'vue';
 
+const shuffleArray = (array) => {
+    let shuffledArray = array.slice(); // Copie du tableau pour éviter de modifier l'original
+    for (let i = shuffledArray.length - 1; i > 0; i--) {
+        let j = Math.floor(Math.random() * (i + 1));
+        [shuffledArray[i], shuffledArray[j]] = [shuffledArray[j], shuffledArray[i]]; // Échange des éléments
+    }
+    return shuffledArray;
+}
+
 const movies = ref([
   "Les Evadés",
   "Le Parrain",
