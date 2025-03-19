@@ -39,7 +39,7 @@ const movies = ref([
 
 const movie = ref('')
 const addMovie = () => {
-  movies.value.push(movie.value)
+  movies.value = [movie.value, ...movies.value]
   movie.value = ''
 }
 const removeMovie = (movie) => {
@@ -56,6 +56,10 @@ const randomize = () => {
 .list-enter-active,
 .list-leave-active {
   transition: all 0.5s ease;
+}
+
+.list-leave-active {
+  position: absolute;
 }
 
 .list-enter-from,
