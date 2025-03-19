@@ -3,14 +3,14 @@
     <input type="text" v-model="movie">
     <button :disabled="movie.length === 0 ">Ajouter</button>
   </form>
-  <ul>
-    <TransitionGroup name="list"> <!--TransitionGroup ne fonctionne que si il a un enfant avec un v-for-->
+
+    <TransitionGroup name="list" tag="ul"> <!--TransitionGroup ne fonctionne que si il a un enfant avec un v-for-->
+      <!--On peut ajouter un tag="ul" pour ne pas avoir à mettre de balise ul en plus autour des <li>-->
       <li v-for="movie in movies" :key="movie">
         {{ movie }}
         <button class="secondary" @click="removeMovie(movie)">x</button>
       </li>
-  </TransitionGroup>
-  </ul>
+    </TransitionGroup>
 </template>
 
 <script setup>
