@@ -4,10 +4,10 @@
     <button :disabled="movie.length === 0 ">Ajouter</button>
   </form>
   <ul>
-    <TransitionGroup name=""> <!--TransitionGroup ne fonctionne que si il a un enfant avec un v-for-->
+    <TransitionGroup name="list"> <!--TransitionGroup ne fonctionne que si il a un enfant avec un v-for-->
       <li v-for="movie in movies" :key="movie">
         {{ movie }}
-        <button class="secondary" @click="removeMovie(Movie)">x</button>
+        <button class="secondary" @click="removeMovie(movie)">x</button>
       </li>
   </TransitionGroup>
   </ul>
