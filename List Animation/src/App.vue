@@ -35,3 +35,12 @@ const removeMovie = (movie) => {
   movies.value = movies.value.filter(m => m !== movie)
 }
 </script> 
+
+<style>
+.list-enter-active,
+.list-leave-active {
+  transition: all 0.5s ease;
+}
+
+
+</style>
