@@ -6,11 +6,14 @@
 
     <TransitionGroup name="list" tag="ul"> <!--TransitionGroup ne fonctionne que si il a un enfant avec un v-for-->
       <!--On peut ajouter un tag="ul" pour ne pas avoir à mettre de balise ul en plus autour des <li>-->
+      <!--Les modes n'ont pas de sens pour un TransitionGroup-->
       <li v-for="movie in movies" :key="movie">
         {{ movie }}
         <button class="secondary" @click="removeMovie(movie)">x</button>
       </li>
     </TransitionGroup>
+
+    <button @click="randomize">Réorganiser</button>
 </template>
 
 <script setup>
@@ -32,6 +35,10 @@ const addMovie = () => {
 }
 const removeMovie = (movie) => {
   movies.value = movies.value.filter(m => m !== movie)
+}
+
+const randomize = () => {
+  movies.value = shuffleArray(movies.value)
 }
 </script> 
 
