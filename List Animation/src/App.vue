@@ -16,7 +16,6 @@
 <script setup>
 import { ref } from 'vue';
 
-const showSpoiler = ref(false)
 const movies = ref([
   "Les Evadés",
   "Le Parrain",
