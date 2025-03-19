@@ -4,10 +4,12 @@
     <button :disabled="movie.length === 0 ">Ajouter</button>
   </form>
   <ul>
-    <li v-for="movie in movies" :key="movie">
-      {{ movie }}
-      <button class="secondary" @click="removeMovie(Movie)">x</button>
-    </li>
+    <TransitionGroup name=""> <!--TransitionGroup ne fonctionne que si il a un enfant avec un v-for-->
+      <li v-for="movie in movies" :key="movie">
+        {{ movie }}
+        <button class="secondary" @click="removeMovie(Movie)">x</button>
+      </li>
+  </TransitionGroup>
   </ul>
 </template>
 
@@ -26,6 +28,10 @@ const movies = ref([
 
 const movie = ref('')
 const addMovie = () => {
-  
+  movies.value.push(movie.value)
+  movie.value = ''
 }
-</script>
+const removeMovie = (movie) => {
+  movies.value = movies.value.filter(m => m !== movie)
+}
+</script> 
